@@ -17,21 +17,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('client.index');
-});
+// Route::get('/', function () {
+//     return view('client.index');
+// });
 
-Route::get('shop', function () {
-    return view('client.shop');
-})->name('shop');
+// Route::get('shop', function () {
+//     return view('client.shop');
+// })->name('shop');
 
-Route::get('about', function () {
-    return view('client.about');
-})->name('about');
-Route::get('/', [ClientController::class, 'index']);
-Route::get('/{id}/details', [ClientController::class, 'details'])->name('client.details');
+// Route::get('about', function () {
+//     return view('client.about');
+// })->name('about');
+// Route::get('/', [ClientController::class, 'index']);
+// Route::get('/{id}/details', [ClientController::class, 'details'])->name('client.details');
+// Route::get('/category/{id}', [ClientController::class, 'category'])->name('client.category');
+// Route::get('/search', [ClientController::class, 'search'])->name('search');
+
+Route::get('/', [ClientController::class, 'index'])->name('home');
+Route::get('/shop', [ClientController::class, 'shop'])->name('shop');
+Route::get('/about', [ClientController::class, 'about'])->name('about');
+Route::get('/news/{id}', [ClientController::class, 'details'])->name('client.details');
 Route::get('/category/{id}', [ClientController::class, 'category'])->name('client.category');
-
+Route::get('/search', [ClientController::class, 'search'])->name('search');
 
 
 Route::prefix('admin')->group(function () {
