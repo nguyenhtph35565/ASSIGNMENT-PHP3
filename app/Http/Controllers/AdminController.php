@@ -30,4 +30,10 @@ class AdminController extends Controller
     {
         return view('admin.news.details');
     }
+
+    public function createCate()
+    {
+
+        return view('admin.categories.create');
+    }
 }

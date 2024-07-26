@@ -17,37 +17,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('client.index');
-// });
-
-// Route::get('shop', function () {
-//     return view('client.shop');
-// })->name('shop');
-
-// Route::get('about', function () {
-//     return view('client.about');
-// })->name('about');
-// Route::get('/', [ClientController::class, 'index']);
-// Route::get('/{id}/details', [ClientController::class, 'details'])->name('client.details');
-// Route::get('/category/{id}', [ClientController::class, 'category'])->name('client.category');
-// Route::get('/search', [ClientController::class, 'search'])->name('search');
-
-Route::get('/', [ClientController::class, 'index'])->name('home');
-Route::get('/shop', [ClientController::class, 'shop'])->name('shop');
-Route::get('/about', [ClientController::class, 'about'])->name('about');
-Route::get('/news/{id}', [ClientController::class, 'details'])->name('client.details');
+Route::get('/',              [ClientController::class, 'index'])->name('home');
+Route::get('/shop',          [ClientController::class, 'shop'])->name('shop');
+Route::get('/about',         [ClientController::class, 'about'])->name('about');
+Route::get('/news/{id}',     [ClientController::class, 'details'])->name('client.details');
 Route::get('/category/{id}', [ClientController::class, 'category'])->name('client.category');
-Route::get('/search', [ClientController::class, 'search'])->name('search');
+Route::get('/search',        [ClientController::class, 'search'])->name('search');
 
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index']);
-    Route::get('/table', [NewController::class, 'index'])->name('admin.table');
-    Route::get('/create', [NewController::class, 'create'])->name('admin.create');
-    Route::post('/store', [NewController::class, 'store'])->name('admin.store');
+    Route::get('/',             [AdminController::class, 'index']);
+    Route::get('/table',        [NewController::class, 'index'])->name('admin.table');
+    Route::get('/create',       [NewController::class, 'create'])->name('admin.create');
+    Route::post('/store',       [NewController::class, 'store'])->name('admin.store');
     Route::get('/{id}/details', [NewController::class, 'details'])->name('admin.details');
-    Route::get('/{id}/edit', [NewController::class, 'edit'])->name('admin.edit');
-    Route::put('/{id}', [NewController::class, 'update'])->name('admin.update');
-    Route::get('/{id}/delete', [NewController::class, 'destroy'])->name('admin.delete');
+    Route::get('/{id}/edit',    [NewController::class, 'edit'])->name('admin.edit');
+    Route::put('/{id}',         [NewController::class, 'update'])->name('admin.update');
+    Route::get('/{id}/delete',  [NewController::class, 'destroy'])->name('admin.delete');
+
+    //
+    Route::get('/createCate',       [AdminController::class, 'createCate'])->name('admin.createCate');
 });

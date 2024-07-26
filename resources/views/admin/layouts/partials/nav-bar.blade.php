@@ -7,10 +7,18 @@
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"> <i></i>Admin</a>
+                        aria-expanded="false"> <i></i>News</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i></i><a href="{{ route('admin.create') }}">ADD</a></li>
-                        <li><i></i><a href="{{ route('admin.table') }}">TABLE</a></li>
+                        <li><i></i><a href="{{ route('admin.create') }}">Create</a></li>
+                        <li><i></i><a href="{{ route('admin.table') }}">Table</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"> <i></i>Categories</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i></i><a href="{{ route('admin.createCate') }}">Create</a></li>
+                        <li><i></i><a href="#">Table</a></li>
                     </ul>
                 </li>
             </ul>
