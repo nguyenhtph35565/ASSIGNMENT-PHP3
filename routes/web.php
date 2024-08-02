@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\SearchController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +37,18 @@ Route::prefix('admin')->group(function () {
     Route::put('/{id}',         [NewController::class, 'update'])->name('admin.update');
     Route::get('/{id}/delete',  [NewController::class, 'destroy'])->name('admin.delete');
 
-    //
-    Route::get('/createCate',       [AdminController::class, 'createCate'])->name('admin.createCate');
+    // Category routes
+    Route::get('/createCate',           [AdminController::class, 'createCate'])->name('admin.createCate');
+    Route::get('/categories',           [CategoryController::class, 'index'])->name('admin.categories.table');
+    Route::get('/categories/create',    [CategoryController::class, 'create'])->name('admin.categories.create');
+    Route::post('/categories/store',    [CategoryController::class, 'store'])->name('admin.categories.store');
+    Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+    Route::put('/categories/{id}',      [CategoryController::class, 'update'])->name('admin.categories.update');
+    Route::delete('/categories/{id}',   [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
 });
+
+
+//
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

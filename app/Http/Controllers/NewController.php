@@ -8,15 +8,35 @@ use Illuminate\Support\Facades\DB;
 
 class NewController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = DB::table('news')
-            ->join('categories', 'categories.id', '=', 'news.category_id')
-            ->select('news.id', 'news.titel', 'news.description', 'news.image', 'news.view', 'news.created_at', 'categories.name as category_name')
-            ->get();
+        $categoryId = $request->input('category_id');
+        $search = $request->input('search');
 
-        return view('admin.news.table', compact('data'));
+        $query = DB::table('news')
+            ->join('categories', 'categories.id', '=', 'news.category_id')
+            ->select('news.id', 'news.titel', 'news.description', 'news.image', 'news.view', 'news.created_at', 'categories.name as category_name');
+
+        if ($categoryId) {
+            $query->where('news.category_id', $categoryId);
+        }
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('news.titel', 'like', "%{$search}%")
+                    ->orWhere('news.description', 'like', "%{$search}%");
+            });
+        }
+
+        $data = $query->get();
+
+        $categories = DB::table('categories')->pluck('name', 'id'); // Get categories for the filter dropdown
+
+        return view('admin.news.table', compact('data', 'categories'));
     }
+
+
+
 
     public function create()
     {

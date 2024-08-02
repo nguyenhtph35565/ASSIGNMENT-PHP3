@@ -11,10 +11,43 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Data Table</strong><br><br>
-                            <a href="{{ route('admin.create') }}">
-                                <button class="btn btn-success">Create</button>
-                            </a>
+                            <strong class="card-title">News Table</strong><br><br>
+                            <div class="d-flex justify-content-between mb-3">
+                                <!-- Create Button -->
+                                <a href="{{ route('admin.create') }}" class="btn btn-success btn-sm mb-2">Create</a>
+
+                                <!-- Filter and Search Forms -->
+                                <div class="d-flex">
+                                    <!-- Filter Form -->
+                                    <form method="GET" action="{{ route('admin.table') }}" class="form-inline mr-2">
+                                        <div class="form-group mb-2">
+                                            <label for="category_id" class="sr-only">Category</label>
+                                            <select name="category_id" id="category_id"
+                                                class="form-control form-control-sm">
+                                                <option value="">All Categories</option>
+                                                @foreach ($categories as $id => $name)
+                                                    <option value="{{ $id }}"
+                                                        {{ request('category_id') == $id ? 'selected' : '' }}>
+                                                        {{ $name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-secondary btn-sm mb-2">Filter</button>
+                                    </form>
+
+                                    <!-- Search Form -->
+                                    <form method="GET" action="{{ route('admin.table') }}" class="form-inline">
+                                        <div class="form-group mb-2">
+                                            <label for="search" class="sr-only">Search</label>
+                                            <input type="text" name="search" id="search"
+                                                class="form-control form-control-sm" placeholder="Search..."
+                                                value="{{ request('search') }}">
+                                        </div>
+                                        <button type="submit" class="btn btn-secondary btn-sm mb-2">Search</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="card-body">
@@ -45,17 +78,18 @@
                                             <td>{{ $item->created_at }}</td>
                                             <td>{{ $item->category_name }}</td>
                                             <td>
-                                                <a href="{{ route('admin.edit', ['id' => $item->id]) }}">
-                                                    <button class="btn btn-sm btn-warning edit-item-btn"
-                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                                <a href="{{ route('admin.edit', ['id' => $item->id]) }}"
+                                                    class="btn btn-sm btn-warning btn-sm mb-2">
+                                                    Edit
                                                 </a>
-                                                <a href="{{ route('admin.details', ['id' => $item->id]) }}">
-                                                    <button class="btn btn-primary">Details</button>
+                                                <a href="{{ route('admin.details', ['id' => $item->id]) }}"
+                                                    class="btn btn-primary btn-sm mb-2">
+                                                    Details
                                                 </a>
-                                                <a href="{{ route('admin.delete', ['id' => $item->id]) }}">
-                                                    <button class="btn btn-sm btn-danger remove-item-btn"
-                                                        data-bs-toggle="modal" data-bs-target="#deleteRecordModal"
-                                                        onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">Delete</button>
+                                                <a href="{{ route('admin.delete', ['id' => $item->id]) }}"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+                                                    class="btn btn-sm btn-danger btn-sm mb-2">
+                                                    Delete
                                                 </a>
                                             </td>
                                         </tr>
@@ -66,6 +100,6 @@
                     </div>
                 </div>
             </div>
-        </div><!-- .animated -->
-    </div><!-- .content -->
+        </div>
+    </div>
 @endsection

@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Create Category
+    Edit Category
 @endsection
 
 @section('content')
@@ -11,21 +11,23 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Create Category</strong>
+                            <strong class="card-title">Edit Category</strong>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('admin.categories.store') }}" method="POST">
+                            <form action="{{ route('admin.categories.update', $category->id) }}" method="POST">
                                 @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <label for="name">Category Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" required>
+                                    <input type="text" name="name" id="name" class="form-control"
+                                        value="{{ old('name', $category->name) }}" required>
                                 </div>
-                                <button type="submit" class="btn btn-success">Create</button>
+                                <button type="submit" class="btn btn-success">Update</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </div><!-- .animated -->
-    </div><!-- .content -->
+        </div>
+    </div>
 @endsection

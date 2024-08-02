@@ -18,7 +18,7 @@
                         aria-expanded="false"> <i></i>Categories</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i></i><a href="{{ route('admin.createCate') }}">Create</a></li>
-                        <li><i></i><a href="#">Table</a></li>
+                        <li><i></i><a href="{{ route('admin.categories.table') }}">Table</a></li>
                     </ul>
                 </li>
             </ul>
