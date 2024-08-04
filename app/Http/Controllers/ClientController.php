@@ -62,6 +62,10 @@ class ClientController extends Controller
 
     public function category($id)
     {
+
+        $category = DB::table('categories')->where('id', $id)->first();
+        $categoryName = $category ? $category->name : 'Tin Trong Loại';
+
         $data = DB::table('news')
             ->join('categories', 'categories.id', '=', 'news.category_id')
             ->select('news.id', 'news.titel', 'news.description', 'news.image', 'news.view', 'news.created_at', 'categories.name as category_name')
@@ -70,8 +74,9 @@ class ClientController extends Controller
 
         $collections = DB::table('categories')->get();
 
-        return view('client.category', compact('data', 'collections'));
+        return view('client.category', compact('data', 'collections', 'categoryName'));
     }
+
 
     public function search(Request $request)
     {

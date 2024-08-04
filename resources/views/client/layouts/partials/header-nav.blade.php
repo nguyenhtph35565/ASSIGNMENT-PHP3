@@ -4,10 +4,7 @@
             <li class="active">
                 <a href="/">Trang chủ</a>
             </li>
-            <li><a href="{{ route('shop') }}">Cửa hàng</a></li>
-            <li>
-                <a href="{{ route('about') }}">Về chúng tôi</a>
-            </li>
+
             <li class="has-children">
                 <a href="#">Tin tức</a>
                 <ul class="dropdown">
@@ -18,6 +15,11 @@
                     @endforeach
                 </ul>
             </li>
+
+            <li>
+                <a href="{{ route('about') }}">Về chúng tôi</a>
+            </li>
+
             <li><a href="/">Liên hệ</a></li>
         </ul>
     </div>

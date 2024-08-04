@@ -53,6 +53,7 @@ Route::prefix('admin')->group(function () {
 });
 
 
+Route::get('/latest', [NewController::class, 'latest'])->name('client.latest');
 
 
 
@@ -67,7 +68,7 @@ Route::get('register', [RegisterController::class, 'showFormRegister'])->name('r
 Route::post('register', [RegisterController::class, 'register']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin', [HomeController::class, 'dashboard'])->name('dashboard')->middleware(CheckAdmin::class);
+Route::get('/admin', [AdminController::class, 'index'])->name('dashboard')->middleware(CheckAdmin::class);
 
 Auth::routes();
 

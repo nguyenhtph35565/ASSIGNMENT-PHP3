@@ -1,7 +1,8 @@
 @extends('client.layouts.master')
 
 @section('content')
-    @include('client.components.breadcrumb', ['pageName' => 'Tin Trong Loại'])
+    @include('client.components.breadcrumb', ['pageName' => $categoryName])
+
 
     <div class="site-section">
         <div class="container">
