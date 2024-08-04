@@ -10,11 +10,12 @@
                 <div class="col-md-9 order-2">
                     <div class="row mb-5">
                         @foreach ($data as $item)
-                            <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                                <div class="block-4 text-center border">
+                            <div class="col-12 mb-4" data-aos="fade-up">
+                                <div class="block-4 d-flex align-items-center border">
                                     <figure class="block-4-image">
                                         <a href="{{ route('client.details', $item->id) }}">
-                                            <img src="{{ asset('images/' . $item->image) }}" alt="Image placeholder"
+                                            <img style="with:150px; height:150px"
+                                                src="{{ asset('images/' . $item->image) }}" alt="Image placeholder"
                                                 class="img-fluid">
                                         </a>
                                     </figure>
@@ -27,21 +28,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="row" data-aos="fade-up">
-                        <div class="col-md-12 text-center">
-                            <div class="site-block-27">
-                                <ul>
-                                    <li><a href="#">&lt;</a></li>
-                                    <li class="active"><span>1</span></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">&gt;</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    {{ $data->links() }}
                 </div>
             </div>
         </div>

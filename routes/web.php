@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\SearchController;
+use App\Http\Middleware\CheckAdmin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Client
 Route::get('/',              [ClientController::class, 'index'])->name('home');
 Route::get('/shop',          [ClientController::class, 'shop'])->name('shop');
 Route::get('/about',         [ClientController::class, 'about'])->name('about');
@@ -26,7 +31,7 @@ Route::get('/news/{id}',     [ClientController::class, 'details'])->name('client
 Route::get('/category/{id}', [ClientController::class, 'category'])->name('client.category');
 Route::get('/search',        [ClientController::class, 'search'])->name('search');
 
-
+// Admin
 Route::prefix('admin')->group(function () {
     Route::get('/',             [AdminController::class, 'index']);
     Route::get('/table',        [NewController::class, 'index'])->name('admin.table');
@@ -48,7 +53,22 @@ Route::prefix('admin')->group(function () {
 });
 
 
-//
-// Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//
+
+Route::get('login', [LoginController::class, 'showFormLogin'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('register', [RegisterController::class, 'showFormRegister'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', [HomeController::class, 'dashboard'])->name('dashboard')->middleware(CheckAdmin::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

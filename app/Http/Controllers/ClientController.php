@@ -11,15 +11,27 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $data = DB::table('news')
+        // tin mới
+        $latestNews = DB::table('news')
             ->join('categories', 'categories.id', '=', 'news.category_id')
             ->select('news.id', 'news.titel', 'news.description', 'news.image', 'news.view', 'news.created_at', 'categories.name as category_name')
+            ->orderBy('news.created_at', 'desc')
+            ->limit(5)
+            ->get();
+
+        // tin nổi bật
+        $mostViewedNews = DB::table('news')
+            ->join('categories', 'categories.id', '=', 'news.category_id')
+            ->select('news.id', 'news.titel', 'news.description', 'news.image', 'news.view', 'news.created_at', 'categories.name as category_name')
+            ->orderBy('news.view', 'desc')
+            ->limit(5)
             ->get();
 
         $collections = DB::table('categories')->get();
 
-        return view('client.index', compact('data', 'collections'));
+        return view('client.index', compact('latestNews', 'mostViewedNews', 'collections'));
     }
+
 
     public function about()
     {
@@ -54,7 +66,7 @@ class ClientController extends Controller
             ->join('categories', 'categories.id', '=', 'news.category_id')
             ->select('news.id', 'news.titel', 'news.description', 'news.image', 'news.view', 'news.created_at', 'categories.name as category_name')
             ->where('categories.id', $id)
-            ->get();
+            ->paginate(10);
 
         $collections = DB::table('categories')->get();
 

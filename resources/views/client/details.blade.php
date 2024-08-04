@@ -1,36 +1,40 @@
 @extends('client.layouts.master')
 
 @section('content')
-    @include('client.components.breadcrumb', ['pageName' => 'Details'])
+    @include('client.components.breadcrumb', ['pageName' => 'Chi tiết'])
 
-    <div class="site-section border-bottom" data-aos="fade">
+    <div class="site-section border-bottom py-5" data-aos="fade">
         <div class="container">
             <div class="row mb-5">
-                <div class="col-md-6">
-                    <div class="block-16">
-                        <figure>
-                            <img src="{{ asset('images/' . $data->image) }}" alt="Image placeholder" class="img-fluid rounded">
+                <div class="col-md-12">
+                    <div class="content">
+                        <!-- Tiêu đề -->
+                        <div class="site-section-heading pt-3 mb-4 text-center">
+                            <h2 class="text-black">{{ $data->titel }}</h2>
+                        </div>
 
-                        </figure>
+                        <!-- Hình ảnh -->
+                        <div class="text-center mb-4">
+                            <div class="block-16">
+                                <figure>
+                                    <img style="width:100%; height:auto" src="{{ asset('images/' . $data->image) }}"
+                                        alt="Image placeholder" class="img-fluid rounded img-large">
+                                </figure>
+                            </div>
+                        </div>
+
+                        <!-- Nội dung -->
+                        <div class="mb-4">
+                            <p><strong>Danh mục:</strong> {{ $data->category_name }}</p>
+                            <p><strong>Lượt xem:</strong> {{ $data->view }}</p>
+                            <p><strong>Ngày đăng:</strong> {{ $data->created_at }}</p>
+                        </div>
+                        <div class="content">
+                            <p>{{ $data->description }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-5">
-                    <div class="site-section-heading pt-3 mb-4">
-                        <h2 class="text-black">{{ $data->titel }}</h2><br>
-                    </div>
-                    <div>
-                        <p>Danh mục: {{ $data->category_name }}</p>
-                        <p>Lượt xem: {{ $data->view }}</p>
-                        <p>Ngày đăng: {{ $data->created_at }}</p>
-                    </div>
-                </div>
-                <div>
-                    <p>{{ $data->description }}</p>
                 </div>
             </div>
         </div>
     </div>
-
-    {{-- Other sections can be included or modified as needed --}}
 @endsection

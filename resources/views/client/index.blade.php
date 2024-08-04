@@ -1,19 +1,8 @@
 @extends('client.layouts.master')
 
 @section('content')
-    <div class="site-blocks-cover" style="background-image: url(/client/images/hero_1.jpg);" data-aos="fade">
-        <div class="container">
-            <div class="row align-items-start align-items-md-center justify-content-end">
-                <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-                    <h1 class="mb-2">Finding Your Perfect Shoes</h1>
-                    <div class="intro-text text-center text-md-left">
-                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam.
-                            Integer accumsan tincidunt fringilla.</p>
-                        <p><a href="#" class="btn btn-sm btn-primary">Details</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="site-blocks-cover" style="background-image: url(/client/images/tt.jpg);" data-aos="fade">
+        {{--  --}}
     </div>
 
     <div class="site-section site-blocks-1">
@@ -62,17 +51,19 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="nonloop-block-3 owl-carousel ">
+                    <div class="nonloop-block-3 owl-carousel">
                         @foreach ($collections as $item)
                             <div class="item">
                                 <div class="block-4 text-center btn btn-primary btn-sm">
+                                    {{-- Nếu bạn có hình ảnh, bỏ chú thích đoạn này --}}
                                     {{-- <figure class="block-4-image">
                                         <img src="{{ asset('images/' . $item->image) }}" alt="Image placeholder"
                                             class="img-fluid">
                                     </figure> --}}
                                     <div class="block-4-owl-text p-4">
-                                        <h3><a href="#">{{ $item->name }}</a></h3>
-
+                                        <h3><a
+                                                href="{{ route('client.category', ['id' => $item->id]) }}">{{ $item->name }}</a>
+                                        </h3>
                                     </div>
                                 </div>
                             </div>
@@ -80,6 +71,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -93,12 +85,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="nonloop-block-3 owl-carousel">
-                        @foreach ($data as $item)
+                        @foreach ($mostViewedNews as $item)
                             <div class="item">
                                 <div class="block-4 text-center">
                                     <figure class="block-4-image">
-                                        <img src="{{ asset('images/' . $item->image) }}" alt="Image placeholder"
-                                            class="img-fluid">
+                                        <img style="with:150px; height:150px" src="{{ asset('images/' . $item->image) }}"
+                                            alt="Image placeholder" class="img-fluid">
                                     </figure>
                                     <div class="block-4-text p-4">
                                         <h3><a
@@ -113,26 +105,35 @@
             </div>
         </div>
     </div>
-
-    <div class="site-section block-8">
+    <div class="site-section block-3 site-blocks-2 bg-light">
         <div class="container">
-            <div class="row justify-content-center mb-5">
+            <div class="row justify-content-center">
                 <div class="col-md-7 site-section-heading text-center pt-4">
-                    <h2>Big Sale!</h2>
+                    <h2>Tin Mới Nhất</h2>
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-md-12 col-lg-7 mb-5">
-                    <a href="#"><img src="/client/images/blog_1.jpg" alt="Image placeholder"
-                            class="img-fluid rounded"></a>
-                </div>
-                <div class="col-md-12 col-lg-5 text-center pl-md-5">
-                    <h2><a href="#">50% less in all items</a></h2>
-                    <p class="post-meta mb-4">By <a href="#">Carl Smith</a> <span class="block-8-sep">&bullet;</span>
-                        September 3, 2018</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam iste dolor accusantium facere
-                        corporis ipsum animi deleniti fugiat. Ex, veniam?</p>
-                    <p><a href="#" class="btn btn-primary btn-sm">Shop Now</a></p>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="nonloop-block-3 owl-carousel">
+                        @foreach ($latestNews as $item)
+                            <div class="item">
+                                <div class="block-4 text-center">
+                                    <figure class="block-4-image">
+                                        <div style="position: relative; width: 100%; padding-bottom: 56.25%;">
+                                            <img src="{{ asset('images/' . $item->image) }}" alt="Image placeholder"
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+
+                                    </figure>
+                                    <div class="block-4-text p-4">
+                                        <h3><a
+                                                href="{{ route('client.details', ['id' => $item->id]) }}">{{ $item->titel }}</a>
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

@@ -751,3 +751,26 @@ a {
   width: 120px;
   border-radius: 50%;
   margin-bottom: 20px; }
+
+  .block-4 {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.block-4-image {
+    flex-shrink: 0;
+}
+
+.block-4-image img {
+    width: 150px; /* Hoặc kích thước bạn muốn */
+    height: 100px; /* Hoặc kích thước bạn muốn */
+    object-fit: cover;
+}
+
+.block-4-text {
+    flex-grow: 1;
+    padding: 15px;
+}
