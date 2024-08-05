@@ -2,9 +2,7 @@
 
 @section('content')
     <div class="content">
-        <!-- Animated -->
         <div class="animated fadeIn">
-            <!-- Widgets  -->
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="card">
@@ -78,8 +76,6 @@
                     </div>
                 </div>
             </div>
-            <!-- /Widgets -->
-            <!--  Traffic  -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -89,7 +85,6 @@
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="card-body">
-                                    <!-- <canvas id="TrafficChart"></canvas>   -->
                                     <div id="traffic-chart" class="traffic-chart"></div>
                                 </div>
                             </div>
@@ -123,21 +118,18 @@
                                         <h4 class="por-title">Targeted Visitors</h4>
                                         <div class="por-txt">99,658 Users (90%)</div>
                                         <div class="progress mb-2" style="height: 5px;">
-                                            <div class="progress-bar bg-flat-color-4" role="progressbar"
-                                                style="width: 90%;" aria-valuenow="90" aria-valuemin="0"
-                                                aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-flat-color-4" role="progressbar" style="width: 90%;"
+                                                aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </div>
-                                </div> <!-- /.card-body -->
+                                </div>
                             </div>
-                        </div> <!-- /.row -->
+                        </div>
                         <div class="card-body"></div>
                     </div>
-                </div><!-- /# column -->
+                </div>
             </div>
-            <!--  /Traffic -->
             <div class="clearfix"></div>
-            <!-- Orders -->
             <div class="orders">
                 <div class="row">
                     <div class="col-xl-8">
@@ -242,11 +234,10 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div> <!-- /.table-stats -->
+                                </div>
                             </div>
-                        </div> <!-- /.card -->
-                    </div> <!-- /.col-lg-8 -->
-
+                        </div>
+                    </div>
                     <div class="col-xl-4">
                         <div class="row">
                             <div class="col-lg-6 col-xl-12">
@@ -256,7 +247,7 @@
                                             <div id="flotPie1" class="float-chart"></div>
                                         </div>
                                     </div>
-                                </div><!-- /.card -->
+                                </div>
                             </div>
 
                             <div class="col-lg-6 col-xl-12">
@@ -270,11 +261,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div> <!-- /.col-md-4 -->
+                    </div>
                 </div>
             </div>
-            <!-- /.orders -->
-            <!-- To Do and Live Chat -->
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card">

@@ -8,12 +8,10 @@
             <div class="row mb-5">
                 <div class="col-md-12">
                     <div class="content">
-                        <!-- Tiêu đề -->
                         <div class="site-section-heading pt-3 mb-4 text-center">
+                            {{-- @dd($data); --}}
                             <h2 class="text-black">{{ $data->titel }}</h2>
                         </div>
-
-                        <!-- Hình ảnh -->
                         <div class="text-center mb-4">
                             <div class="block-16">
                                 <figure>
@@ -22,8 +20,6 @@
                                 </figure>
                             </div>
                         </div>
-
-                        <!-- Nội dung -->
                         <div class="mb-4">
                             <p><strong>Danh mục:</strong> {{ $data->category_name }}</p>
                             <p><strong>Lượt xem:</strong> {{ $data->view }}</p>

@@ -53,23 +53,18 @@ Route::prefix('admin')->group(function () {
 });
 
 
-Route::get('/latest', [NewController::class, 'latest'])->name('client.latest');
+
 
 
 
 //
 
-Route::get('login', [LoginController::class, 'showFormLogin'])->name('login');
-Route::post('login', [LoginController::class, 'login']);
-
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::get('register', [RegisterController::class, 'showFormRegister'])->name('register');
+Route::get('login',     [LoginController::class, 'showFormLogin'])->name('login');
+Route::post('login',    [LoginController::class, 'login']);
+Route::post('logout',   [LoginController::class, 'logout'])->name('logout');
+Route::get('register',  [RegisterController::class, 'showFormRegister'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin', [AdminController::class, 'index'])->name('dashboard')->middleware(CheckAdmin::class);
-
+Route::get('/home',     [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin',    [AdminController::class, 'index'])->name('dashboard')->middleware(CheckAdmin::class);
+Route::get('/home',     [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

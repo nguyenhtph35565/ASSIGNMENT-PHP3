@@ -13,12 +13,8 @@
                         <div class="card-header">
                             <strong class="card-title">News Table</strong><br><br>
                             <div class="d-flex justify-content-between mb-3">
-                                <!-- Create Button -->
                                 <a href="{{ route('admin.create') }}" class="btn btn-success btn-sm mb-2">Create</a>
-
-                                <!-- Filter and Search Forms -->
                                 <div class="d-flex">
-                                    <!-- Filter Form -->
                                     <form method="GET" action="{{ route('admin.table') }}" class="form-inline mr-2">
                                         <div class="form-group mb-2">
                                             <label for="category_id" class="sr-only">Category</label>
@@ -35,8 +31,6 @@
                                         </div>
                                         <button type="submit" class="btn btn-secondary btn-sm mb-2">Filter</button>
                                     </form>
-
-                                    <!-- Search Form -->
                                     <form method="GET" action="{{ route('admin.table') }}" class="form-inline">
                                         <div class="form-group mb-2">
                                             <label for="search" class="sr-only">Search</label>
